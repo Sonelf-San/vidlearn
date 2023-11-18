@@ -2,6 +2,8 @@
 
 A new Flutter project.
 
+A Video sharing application. This is a project in realization in partial fullfilement in the award of a M.Sc Computer Science Laval University
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.

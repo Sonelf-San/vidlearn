@@ -1,5 +1,5 @@
 name: vidlearn
-description: A Video sharing application. This is a project in realization in partial fullfilement in the award of a M.Sc Computer Science Laval University
+description: A Video sharing application
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
