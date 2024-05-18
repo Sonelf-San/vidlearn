@@ -16,49 +16,57 @@ class LoginPage extends StatelessWidget {
               children: [
                 Spacer(),
                 Text(
-                  'Hello, welcome back!',
+                  'Welcome to VidLearn!',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 22,
+                    fontSize: 30,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
+                Spacer(),
                 SizedBox(
                   height: 16,
                 ),
                 Text(
-                  'Login to continue',
+                  'Login to access your account',
                   style: TextStyle(
                     color: Colors.white,
+                    fontSize: 16,
                   ),
                 ),
                 Spacer(),
-                TextField(
+                TextFormField(
                   decoration: InputDecoration(
-                    hintText: 'Username',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(12))),
-                    filled: true,
-                    fillColor: Colors.white.withOpacity(0.5),
+                    labelText: 'Email',
+                    prefixIcon: const Icon(
+                      Icons.email,
+                      color: Colors.grey,
+                    ),
                   ),
                 ),
+                Spacer(),
                 SizedBox(
                   height: 16,
                 ),
-                TextField(
+                TextFormField(
+                  obscureText: true, //password hidden
+                  enableSuggestions: false,
+                  autocorrect: false,
                   decoration: InputDecoration(
-                    hintText: 'Password',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(12))),
-                    filled: true,
-                    fillColor: Colors.white.withOpacity(0.5),
+                    labelText: 'Password',
+                    prefixIcon: const Icon(
+                      Icons.lock,
+                      color: Colors.grey,
+                    ),
+                    suffixIcon: Icon(Icons.visibility_off),
                   ),
                 ),
                 Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
                     onPressed: () {
-                      print('Forgot password is clicked');
+                      Navigator.of(context)
+                          .pushReplacementNamed('/forgot-password');
                     },
                     style: TextButton.styleFrom(
                       foregroundColor: Colors.white,
@@ -136,11 +144,11 @@ class LoginPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image.asset(
-                          'assets/images/facebook.png',
+                          'assets/images/outlook.png',
                           width: 20,
                           height: 20,
                         ),
-                        Text(' Login with Facebook'),
+                        Text(' Login with Outlook'),
                       ],
                     ),
                   ),
@@ -155,12 +163,12 @@ class LoginPage extends StatelessWidget {
                     ),
                     TextButton(
                         onPressed: () {
-                          Navigator.of(context).pushReplacementNamed('/signup');
+                          Navigator.of(context).pushReplacementNamed('/');
                         },
                         style: TextButton.styleFrom(
                           foregroundColor: Colors.white,
                         ),
-                        child: Text('Sign up')),
+                        child: Text('Please contact your administration')),
                   ],
                 ),
                 Spacer(),
