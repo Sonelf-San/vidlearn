@@ -86,80 +86,9 @@ class ForgotPasswordPage extends StatelessWidget {
                 SizedBox(
                   height: 16,
                 ),
-                // SizedBox(
-                //   height: 48,
-                //   child: ElevatedButton(
-                //     onPressed: () {
-                //       print('Google is clicked');
-                //     },
-                //     style: ElevatedButton.styleFrom(
-                //       backgroundColor: Colors.white,
-                //       foregroundColor: Colors.black,
-                //       shape: RoundedRectangleBorder(
-                //         borderRadius: BorderRadius.all(Radius.circular(50)),
-                //       ),
-                //     ),
-                //     child: Row(
-                //       mainAxisAlignment: MainAxisAlignment.center,
-                //       children: [
-                //         Image.asset(
-                //           'assets/images/google.png',
-                //           width: 20,
-                //           height: 20,
-                //         ),
-                //         Text(' Sign up with Google'),
-                //       ],
-                //     ),
-                //   ),
-                // ),
                 SizedBox(
                   height: 16,
                 ),
-                // SizedBox(
-                //   height: 48,
-                //   child: ElevatedButton(
-                //     onPressed: () {
-                //       print('Facebbok is clicked');
-                //     },
-                //     style: ElevatedButton.styleFrom(
-                //       backgroundColor: Colors.white,
-                //       foregroundColor: Colors.black,
-                //       shape: RoundedRectangleBorder(
-                //         borderRadius: BorderRadius.all(Radius.circular(50)),
-                //       ),
-                //     ),
-                //     child: Row(
-                //       mainAxisAlignment: MainAxisAlignment.center,
-                //       children: [
-                //         Image.asset(
-                //           'assets/images/facebook.png',
-                //           width: 20,
-                //           height: 20,
-                //         ),
-                //         Text(' Sign up with Facebook'),
-                //       ],
-                //     ),
-                //   ),
-                // ),
-                // Row(
-                //   children: [
-                //     Text(
-                //       "Already have an account? ",
-                //       style: TextStyle(
-                //         color: Colors.white,
-                //       ),
-                //     ),
-                //     TextButton(
-                //         onPressed: () {
-                //           Navigator.of(context).pushReplacementNamed('/');
-                //         },
-                //         style: TextButton.styleFrom(
-                //           foregroundColor: Colors.white,
-                //         ),
-                //         child: Text('Sign in')),
-                //   ],
-                // ),
-                // Spacer(),
               ],
             ),
           ),

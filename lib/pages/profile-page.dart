@@ -33,7 +33,7 @@ class ProfilePage extends StatelessWidget {
                   child: Row(
                     children: [
                       Icon(Icons.edit),
-                      Text('Edit'),
+                      Text('  Edit'),
                     ],
                   ),
                   value: ProfileMenu.edit,
@@ -42,7 +42,7 @@ class ProfilePage extends StatelessWidget {
                   child: Row(
                     children: [
                       Icon(Icons.logout_outlined),
-                      Text('Log out'),
+                      Text('  Log out'),
                     ],
                   ),
                   value: ProfileMenu.logout,

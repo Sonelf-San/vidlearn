@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vidlearn/pages/home-page.dart';
+import 'package:vidlearn/pages/dashboard.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -84,7 +85,7 @@ class LoginPage extends StatelessWidget {
                     onPressed: () {
                       // Navigation
                       Navigator.of(context).pushReplacementNamed(
-                          '/main'); //"pushReplacementNamed" to avoid go back to login page
+                          '/dashboard'); //"pushReplacementNamed" to avoid go back to login page
                       // print('Login button is clicked');
                     },
                     style: ElevatedButton.styleFrom(
