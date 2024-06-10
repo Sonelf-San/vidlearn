@@ -40,6 +40,16 @@ dependencies:
   firebase_core: ^2.24.2
   table_calendar: ^3.0.9
   http: ^0.13.5
+  http_client: ^1.5.2
+  file_picker: ^5.3.1
+  video_player: ^2.7.0
+  flutter_secure_storage: ^8.1.0
+  flutter_html: ^3.0.0-alpha.6
+  mime: ^1.0.4
+  intl: ^0.18.1
+  dio: ^5.4.3+1
+  chewie: ^1.7.5
+  connectivity_plus: ^5.0.2
 
 dev_dependencies:
   flutter_test:

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vidlearn/pages/dashboard.dart';
-import 'package:vidlearn/pages/home-page.dart';
 import 'package:vidlearn/pages/login-page.dart';
-import 'package:vidlearn/pages/main_page.dart';
 import 'package:vidlearn/pages/forgot_password.dart';
 import 'package:vidlearn/styles/app_colors.dart';
 
@@ -32,9 +30,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => LoginPage(),
         '/forgot-password': (context) => ForgotPasswordPage(),
-        '/home': (context) => HomePage(),
         '/dashboard': (context) => Dashboard(),
-        // '/main':(context) => MainPage(),
       },
     );
   }

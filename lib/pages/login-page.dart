@@ -1,9 +1,69 @@
 import 'package:flutter/material.dart';
-import 'package:vidlearn/pages/home-page.dart';
-import 'package:vidlearn/pages/dashboard.dart';
+import 'package:vidlearn/services/api_service.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class LoginPage extends StatefulWidget {
+  LoginPage({super.key});
+
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final ApiService apiService = ApiService();
+
+  bool _obscurePassword = true;
+
+  Future<void> login(BuildContext context) async {
+    final String email = emailController.text;
+    final String password = passwordController.text;
+
+    // Email validation
+    final bool emailValid = RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(email);
+    if (!emailValid) {
+      _showErrorDialog(context, 'Please enter a valid email address.');
+      return;
+    }
+
+    // Password not empty validation
+    if (password.isEmpty) {
+      _showErrorDialog(context, 'Password cannot be empty.');
+      return;
+    }
+
+    try {
+      String? errorMessage = await apiService.login(email, password);
+      if (errorMessage == null) {
+        Navigator.of(context).pushReplacementNamed('/dashboard');
+      } else {
+        _showErrorDialog(context, errorMessage);
+      }
+    } catch (error) {
+      print('Error during login: $error');
+      _showErrorDialog(context, 'An error occurred. Please try again.');
+    }
+  }
+
+  void _showErrorDialog(BuildContext context, String message) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Login Failed'),
+          content: Text(message),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +85,7 @@ class LoginPage extends StatelessWidget {
                   ),
                 ),
                 Spacer(),
-                SizedBox(
-                  height: 16,
-                ),
+                SizedBox(height: 16),
                 Text(
                   'Login to access your account',
                   style: TextStyle(
@@ -37,6 +95,7 @@ class LoginPage extends StatelessWidget {
                 ),
                 Spacer(),
                 TextFormField(
+                  controller: emailController,
                   decoration: InputDecoration(
                     labelText: 'Email',
                     prefixIcon: const Icon(
@@ -46,11 +105,10 @@ class LoginPage extends StatelessWidget {
                   ),
                 ),
                 Spacer(),
-                SizedBox(
-                  height: 16,
-                ),
+                SizedBox(height: 16),
                 TextFormField(
-                  obscureText: true, //password hidden
+                  controller: passwordController,
+                  obscureText: _obscurePassword,
                   enableSuggestions: false,
                   autocorrect: false,
                   decoration: InputDecoration(
@@ -59,7 +117,18 @@ class LoginPage extends StatelessWidget {
                       Icons.lock,
                       color: Colors.grey,
                     ),
-                    suffixIcon: Icon(Icons.visibility_off),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _obscurePassword
+                            ? Icons.visibility_off
+                            : Icons.visibility,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _obscurePassword = !_obscurePassword;
+                        });
+                      },
+                    ),
                   ),
                 ),
                 Align(
@@ -75,18 +144,13 @@ class LoginPage extends StatelessWidget {
                     child: Text('Forgot password?'),
                   ),
                 ),
-                SizedBox(
-                  height: 32,
-                ),
+                SizedBox(height: 32),
                 SizedBox(
                   width: double.infinity,
                   height: 48,
                   child: ElevatedButton(
                     onPressed: () {
-                      // Navigation
-                      Navigator.of(context).pushReplacementNamed(
-                          '/dashboard'); //"pushReplacementNamed" to avoid go back to login page
-                      // print('Login button is clicked');
+                      login(context);
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.amber,
@@ -96,9 +160,7 @@ class LoginPage extends StatelessWidget {
                   ),
                 ),
                 Spacer(),
-                SizedBox(
-                  height: 16,
-                ),
+                SizedBox(height: 16),
                 SizedBox(
                   height: 48,
                   child: ElevatedButton(
@@ -125,14 +187,12 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 16,
-                ),
+                SizedBox(height: 16),
                 SizedBox(
                   height: 48,
                   child: ElevatedButton(
                     onPressed: () {
-                      print('Facebbok is clicked');
+                      print('Facebook is clicked');
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
@@ -163,13 +223,14 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                     TextButton(
-                        onPressed: () {
-                          Navigator.of(context).pushReplacementNamed('/');
-                        },
-                        style: TextButton.styleFrom(
-                          foregroundColor: Colors.white,
-                        ),
-                        child: Text('Please contact your administration')),
+                      onPressed: () {
+                        Navigator.of(context).pushReplacementNamed('/');
+                      },
+                      style: TextButton.styleFrom(
+                        foregroundColor: Colors.white,
+                      ),
+                      child: Text('Please contact your administration'),
+                    ),
                   ],
                 ),
                 Spacer(),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:vidlearn/pages/home-page.dart';
 
 class ForgotPasswordPage extends StatelessWidget {
   const ForgotPasswordPage({super.key});
