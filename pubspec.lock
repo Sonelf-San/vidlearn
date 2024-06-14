@@ -148,6 +148,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.10.0"
+  flex_color_picker:
+    dependency: transitive
+    description:
+      name: flex_color_picker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.2"
+  flex_seed_scheme:
+    dependency: transitive
+    description:
+      name: flex_seed_scheme
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -160,6 +174,55 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.0-alpha.6"
+  flutter_inappwebview:
+    dependency: transitive
+    description:
+      name: flutter_inappwebview
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.8.0"
+  flutter_keyboard_visibility:
+    dependency: transitive
+    description:
+      name: flutter_keyboard_visibility
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.4.1"
+  flutter_keyboard_visibility_linux:
+    dependency: transitive
+    description:
+      name: flutter_keyboard_visibility_linux
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
+  flutter_keyboard_visibility_macos:
+    dependency: transitive
+    description:
+      name: flutter_keyboard_visibility_macos
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
+  flutter_keyboard_visibility_platform_interface:
+    dependency: transitive
+    description:
+      name: flutter_keyboard_visibility_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
+  flutter_keyboard_visibility_web:
+    dependency: transitive
+    description:
+      name: flutter_keyboard_visibility_web
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
+  flutter_keyboard_visibility_windows:
+    dependency: transitive
+    description:
+      name: flutter_keyboard_visibility_windows
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -240,6 +303,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.15.3"
+  html_editor_enhanced:
+    dependency: "direct main"
+    description:
+      name: html_editor_enhanced
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.5.1"
   http:
     dependency: "direct main"
     description:
@@ -261,6 +331,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.2"
+  infinite_listview:
+    dependency: transitive
+    description:
+      name: infinite_listview
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0"
   intl:
     dependency: "direct main"
     description:
@@ -324,6 +401,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.5.0"
+  numberpicker:
+    dependency: transitive
+    description:
+      name: numberpicker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.2"
   numerus:
     dependency: transitive
     description:
@@ -366,6 +450,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.1"
+  pedantic:
+    dependency: transitive
+    description:
+      name: pedantic
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.11.1"
   petitparser:
     dependency: transitive
     description:
@@ -380,6 +471,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.5"
+  pointer_interceptor:
+    dependency: transitive
+    description:
+      name: pointer_interceptor
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.9.3+4"
   provider:
     dependency: transitive
     description:
@@ -497,6 +595,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.16"
+  visibility_detector:
+    dependency: transitive
+    description:
+      name: visibility_detector
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.3"
   wakelock_plus:
     dependency: transitive
     description:

@@ -2,13 +2,12 @@ import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:intl/intl.dart';
 import 'dart:io';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:vidlearn/pages/profile-page.dart';
-// import 'package:vidlearn/pages/course_detail.dart';
 import 'package:vidlearn/styles/app_colors.dart';
-// import 'package:flutter_svg/flutter_svg.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:video_player/video_player.dart';
 import 'package:vidlearn/services/api_service.dart';
@@ -310,6 +309,25 @@ class _DashboardState extends State<Dashboard> {
                           headerStyle: HeaderStyle(
                             formatButtonVisible: false,
                             titleCentered: true,
+                            titleTextStyle: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          daysOfWeekStyle: DaysOfWeekStyle(
+                            weekendStyle: TextStyle(color: Colors.orange),
+                          ),
+                          calendarStyle: CalendarStyle(
+                            todayDecoration: BoxDecoration(
+                              color: Colors.orange,
+                              shape: BoxShape.circle,
+                            ),
+                            selectedDecoration: BoxDecoration(
+                              color: Colors.white,
+                              shape: BoxShape.circle,
+                            ),
+                            selectedTextStyle: TextStyle(color: Colors.black),
+                            defaultTextStyle: TextStyle(color: Colors.white),
                           ),
                           availableGestures: AvailableGestures.all,
                           focusedDay: today,
@@ -430,6 +448,8 @@ class _ChatUIState extends State<ChatUI> {
   Map<String, dynamic>? courseDetails;
   bool isLoading = true;
   String errorMessage = '';
+  // Variable to toggle desciption
+  bool _showFullDescription = false;
 
   @override
   void initState() {
@@ -494,7 +514,7 @@ class _ChatUIState extends State<ChatUI> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              'Video uploaded successfully!',
+              'Video uploaded successfully awaiting for validation!',
               style: TextStyle(color: Colors.green),
             ),
           ),
@@ -538,6 +558,13 @@ class _ChatUIState extends State<ChatUI> {
     return formatter.format(parsedDateTime);
   }
 
+  // Method to truncate HTML content
+  String _truncateHtml(String htmlContent, int limit) {
+    return htmlContent.length > limit
+        ? htmlContent.substring(0, limit) + '...'
+        : htmlContent;
+  }
+
   @override
   void dispose() {
     _videoPlayerController?.dispose();
@@ -568,20 +595,47 @@ class _ChatUIState extends State<ChatUI> {
                         color: Colors.white,
                         padding: const EdgeInsets.all(16.0),
                         margin: const EdgeInsets.only(bottom: 8.0),
-                        child: Text(
-                          courseDetails!['description'] ??
-                              'No description available',
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
+                        child: Column(
+                          children: [
+                            Html(
+                              // Updated to use the Html widget from flutter_html package
+                              data: _showFullDescription
+                                  ? courseDetails!['description'] ??
+                                      'No description available'
+                                  : _truncateHtml(
+                                      courseDetails!['description'] ??
+                                          'No description available',
+                                      100), // Limit to 100 characters
+                              style: {
+                                "body": Style(
+                                  fontSize: FontSize(16),
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                ),
+                              },
+                            ),
+                            // Added GestureDetector to toggle between truncated and full content
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  _showFullDescription = !_showFullDescription;
+                                });
+                              },
+                              child: Text(
+                                _showFullDescription ? 'less' : 'more',
+                                style: TextStyle(
+                                  color: Colors.blue,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     if (_videos.isNotEmpty)
                       ..._videos.map((video) {
                         final videoUrl = video['video'];
-                        // final videoUrl = 'https://www.w3schools.com/html/mov_bbb.mp4';
-                        print('Video URL: $videoUrl'); // Debugging
+                        print('Video URL: $videoUrl');
                         VideoPlayerController controller = VideoPlayerController
                             .networkUrl(Uri.parse(videoUrl))
                           ..initialize().then((_) {
